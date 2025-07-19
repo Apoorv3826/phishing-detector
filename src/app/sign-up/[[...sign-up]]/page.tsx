@@ -1,9 +1,25 @@
 import { SignUp } from "@clerk/nextjs";
+import { Shield } from "lucide-react";
 
 export default function SignUpPage() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-zinc-900">
-      <SignUp path="/sign-up" routing="path" />
+    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center p-4">
+      <div className="w-full max-w-md space-y-8">
+        <div className="text-center">
+          <div className="mx-auto w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center mb-4">
+            <Shield className="h-8 w-8 text-white" />
+          </div>
+          <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+            Join Our Community
+          </h1>
+          <p className="text-slate-600 dark:text-slate-300 mt-2">
+            Create an account to start protecting yourself from phishing attacks
+          </p>
+        </div>
+        <div className="bg-white/70 dark:bg-slate-900/70 backdrop-blur-sm rounded-2xl p-8 shadow-xl border-0">
+          <SignUp path="/sign-up" routing="path" />
+        </div>
+      </div>
     </div>
   );
 }
