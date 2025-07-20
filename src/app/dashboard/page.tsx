@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ShieldAlert, ShieldCheck, Clock, ExternalLink } from "lucide-react";
+import { cookies } from "next/headers";
 
 type HistoryEntry = {
   _id: string;
@@ -31,10 +32,10 @@ export default async function DashboardPage() {
       ? `https://${process.env.VERCEL_URL}`
       : "http://localhost:3000";
 
+  const cookieStore = await cookies();
   const res = await fetch(`${baseUrl}/api/phishing/history`, {
     headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      Cookie: cookieStore.toString(),
     },
     cache: "no-store",
   });
