@@ -27,16 +27,10 @@ export default async function DashboardPage() {
 
   const token = await session.getToken();
 
-  const baseUrl =
-    process.env.VERCEL_URL !== undefined
-      ? `https://${process.env.VERCEL_URL}`
-      : "http://localhost:3000";
-
   const cookieStore = await cookies();
-  const res = await fetch(`${baseUrl}/api/phishing/history`, {
-    headers: {
-      Cookie: cookieStore.toString(),
-    },
+
+  const res = await fetch("/api/phishing/history", {
+    headers: { Cookie: cookieStore.toString() },
     cache: "no-store",
   });
 
