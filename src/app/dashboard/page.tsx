@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ShieldAlert, ShieldCheck, Clock, ExternalLink } from "lucide-react";
-import { cookies } from "next/headers";
 
 type HistoryEntry = {
   _id: string;
@@ -17,6 +16,14 @@ type HistoryEntry = {
   isPhishing: boolean;
   confidence: string;
   createdAt: string;
+};
+
+const getBaseUrl = () => {
+  if (typeof window !== "undefined") return ""; // client
+  return (
+    process.env.NEXT_PUBLIC_BASE_URL ||
+    "https://phishing-detector-azure.vercel.app"
+  ); // server
 };
 
 export default async function DashboardPage() {
@@ -27,10 +34,12 @@ export default async function DashboardPage() {
 
   const token = await session.getToken();
 
-  const cookieStore = await cookies();
+  const baseUrl = getBaseUrl();
 
-  const res = await fetch("/api/phishing/history", {
-    headers: { Cookie: cookieStore.toString() },
+  const res = await fetch(`${baseUrl}/api/phishing/history`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
     cache: "no-store",
   });
 
