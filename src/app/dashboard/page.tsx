@@ -26,16 +26,18 @@ export default async function DashboardPage() {
 
   const token = await session.getToken();
 
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/phishing/history`,
-    {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      cache: "no-store",
-    }
-  );
+  const baseUrl =
+    process.env.VERCEL_URL !== undefined
+      ? `https://${process.env.VERCEL_URL}`
+      : "http://localhost:3000";
+
+  const res = await fetch(`${baseUrl}/api/phishing/history`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    cache: "no-store",
+  });
 
   if (!res.ok) {
     throw new Error("Failed to fetch history");
