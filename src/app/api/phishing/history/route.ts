@@ -5,6 +5,9 @@ import { PhishingHistory } from "@/models/PhishingHistory";
 
 export async function POST(req: Request) {
   const { userId } = await auth();
+  console.log("👤 userId:", userId);
+  console.log("🌐 MONGODB_URI:", process.env.MONGODB_URI);
+
   if (!userId) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
