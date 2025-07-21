@@ -1,36 +1,130 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# 🛡️ Phishing URL Detector
 
-First, run the development server:
+A real-time phishing URL detection system powered by AI and vector embeddings, built with **Next.js 14**, **Clerk**, **MongoDB**, and **Pinecone** for robust, secure, and personalized threat analysis.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 🚀 Features
+
+- 🔍 **Check Suspicious URLs** – Instantly check whether a given URL is a phishing link.
+- 🧠 **AI-Powered Detection** – Uses vector similarity (via Workers AI) to match against a known set of phishing URLs.
+- 📦 **Vector Search with Pinecone** – Store and retrieve phishing patterns efficiently.
+- 👤 **Authentication with Clerk** – Sign up and log in with Clerk for a secure and personalized experience.
+- 🕵️ **User History Tracking** – Authenticated users can view their past phishing checks.
+- 🌗 **Dark Mode Toggle** – Seamless UI experience with dark/light mode support.
+- ☁️ **Vercel Deployment** – Fully deployed using Vercel for blazing-fast performance.
+
+---
+
+## 🖼️ Screenshots
+
+> 📌 Add screenshots of:
+- Homepage / URL Checker
+- Login/Signup via Clerk
+- Phishing Result UI
+- User Dashboard (with history)
+- Dark mode UI
+
+---
+
+## 🧠 How It Works
+
+1. When a user submits a URL, the frontend sends it to the Next.js API route.
+2. The API vectorizes it using **Workers AI** (hosted model) into an embedding.
+3. It compares the embedding to a **Pinecone** vector DB with known phishing patterns.
+4. If similarity is high, it's flagged as phishing.
+
+---
+
+## 🏗️ Tech Stack
+
+| Category | Technology |
+|---------|------------|
+| Frontend | Next.js 14 (App Router), Tailwind CSS |
+| Backend  | Next.js API Routes |
+| Auth     | Clerk.dev |
+| Database | MongoDB |
+| Vector DB| Pinecone |
+| AI Model | Workers AI (sentence embedding model) |
+| Deployment | Vercel |
+
+---
+
+## 📂 Folder Structure (Important Paths)
+
+```
+/src
+  ├── app/
+  │   ├── api/
+  │   │   └── phishing/
+  │   │       ├── check/route.ts         # API to check if URL is phishing
+  │   │       └── history/route.ts       # Save/view history
+  │   ├── dashboard/page.tsx             # Dashboard for user history
+  │   ├── layout.tsx                     # Root layout with theme support
+  │   └── page.tsx                       # Home/URL input
+  ├── components/
+  │   └── UrlCheckerForm.tsx             # Input form component
+  └── utils/
+      ├── embedder.ts                    # Handles embedding logic via Workers AI
+      └── db.ts                          # MongoDB connection util
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🔐 Clerk Integration
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Middleware to protect `/dashboard`
+- Access current user's ID and use it to store/check history in MongoDB
+- Auth UI: sign in, sign up, sign out
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🧪 Testing Phishing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+> Test with dummy URLs like:
+- `http://login-facebook.com.verify-password-reset.ru`
+- `http://microsfot.support-login.info`
+- `http://secure-update.paypai.com`
+- `http://accounts.g00gle.co/signin`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🧾 Seed Data
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Phishing examples from public threat intel sources (CSV: `phishing.csv`)
+- Seeder script: `pinecodeseeder.js`
+- Run once to populate the Pinecone DB with vectors
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 📦 .env.local Setup
+
+```
+CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
+MONGODB_URI=
+PINECONE_API_KEY=
+PINECONE_ENVIRONMENT=
+PINECONE_INDEX_NAME=
+WORKERS_AI_API_KEY=
+```
+
+---
+
+## 🌐 Deployment
+
+- Hosted on **Vercel**
+- Auto-deployed via GitHub push
+- Environment secrets managed via Vercel dashboard
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+> Made with ❤️ by Apoorv Singh  
+> [Portfolio](https://apoorv-my-portfolio.netlify.app/) · [GitHub](https://github.com/Apoorv3826) · [LinkedIn](https://linkedin.com/in/apoorv-singh-a7b79b224)
