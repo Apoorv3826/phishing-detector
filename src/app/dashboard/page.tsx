@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ShieldAlert, ShieldCheck, Clock, ExternalLink } from "lucide-react";
+import { headers } from "next/headers";
 
 type HistoryEntry = {
   _id: string;
@@ -16,14 +17,6 @@ type HistoryEntry = {
   isPhishing: boolean;
   confidence: string;
   createdAt: string;
-};
-
-const getBaseUrl = () => {
-  if (typeof window !== "undefined") return ""; // client
-  return (
-    process.env.NEXT_PUBLIC_BASE_URL ||
-    "https://phishing-detector-azure.vercel.app"
-  ); // server
 };
 
 export default async function DashboardPage() {
@@ -34,9 +27,13 @@ export default async function DashboardPage() {
 
   const token = await session.getToken();
 
-  const baseUrl = getBaseUrl();
+  // ✅ Use host from request headers instead of baseUrl
+  const headersList = await headers();
+  const host = headersList.get("host");
+  const protocol = process.env.NODE_ENV === "development" ? "http" : "https";
+  const fullUrl = `${protocol}://${host}/api/phishing/history`;
 
-  const res = await fetch(`${baseUrl}/api/phishing/history`, {
+  const res = await fetch(fullUrl, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
