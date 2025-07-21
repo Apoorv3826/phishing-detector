@@ -26,11 +26,27 @@ A real-time phishing URL detection system powered by AI and vector embeddings, b
 
 ## 🖼️ Screenshots
 
-- Homepage / URL Checker
-- Login/Signup via Clerk
-- Phishing Result UI
-- User Dashboard (with history)
-- Dark mode UI
+### 🏠 Homepage / URL Checker  
+<img width="100%" alt="Homepage" src="https://github.com/user-attachments/assets/9b5124ed-9afc-4313-8fcc-23faadc952e4" />
+
+---
+
+### 📊 User Dashboard (with history)  
+<img width="100%" alt="Dashboard 1" src="https://github.com/user-attachments/assets/35e5ddba-464c-4e9d-93e3-2066a6e91d20" />
+<img width="100%" alt="Dashboard 2" src="https://github.com/user-attachments/assets/e171a57b-8525-4f90-9aa7-96008a956eb8" />
+
+---
+
+### 🔐 Login/Signup via Clerk  
+<img width="100%" alt="Login 1" src="https://github.com/user-attachments/assets/6b6473f4-a198-410a-873b-da228bfa51df" />
+<img width="100%" alt="Login 2" src="https://github.com/user-attachments/assets/4a3467d0-a0bb-4a85-9e61-0896054b7c88" />
+
+---
+
+### 🌙 Dark Mode UI  
+<img width="100%" alt="Dark Mode 1" src="https://github.com/user-attachments/assets/975184f2-876c-4f13-9d57-5cf2491a0c82" />
+<img width="100%" alt="Dark Mode 2" src="https://github.com/user-attachments/assets/00f3ec2e-6d16-4686-8c13-5b3e72f9fd23" />
+
 
 ---
 
