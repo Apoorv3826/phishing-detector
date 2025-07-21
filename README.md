@@ -19,7 +19,6 @@ A real-time phishing URL detection system powered by AI and vector embeddings, b
 
 ## 🖼️ Screenshots
 
-> 📌 Add screenshots of:
 - Homepage / URL Checker
 - Login/Signup via Clerk
 - Phishing Result UI
