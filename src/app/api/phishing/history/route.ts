@@ -44,6 +44,7 @@ export async function GET() {
     const data = await PhishingHistory.find({ userId }).sort({ createdAt: -1 });
     return NextResponse.json({ success: true, data });
   } catch (error) {
+    console.error("Failed to fetch history:", error);
     return NextResponse.json(
       { error: "Failed to fetch history" },
       { status: 500 }
