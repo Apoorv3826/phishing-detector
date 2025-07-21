@@ -1,6 +1,13 @@
 
 # 🛡️ Phishing URL Detector
 
+![Next.js](https://img.shields.io/badge/Framework-Next.js-000000?logo=nextdotjs)
+![TailwindCSS](https://img.shields.io/badge/Styling-TailwindCSS-06B6D4?logo=tailwindcss&logoColor=white)
+![MongoDB](https://img.shields.io/badge/Database-MongoDB-47A248?logo=mongodb&logoColor=white)
+![Clerk](https://img.shields.io/badge/Auth-Clerk-3B49DF?logo=clerk&logoColor=white)
+![WorkersAI](https://img.shields.io/badge/AI-WorkersAI-F6821F?logo=cloudflare&logoColor=white)
+![Pinecone](https://img.shields.io/badge/VectorDB-Pinecone-42f2f7?logo=pinecone&logoColor=black)
+
 A real-time phishing URL detection system powered by AI and vector embeddings, built with **Next.js 14**, **Clerk**, **MongoDB**, and **Pinecone** for robust, secure, and personalized threat analysis.
 
 ---
